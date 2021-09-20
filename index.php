@@ -8,3 +8,10 @@ require 'includes/config.php';
 require 'includes/functions.php';
 
 init();
+
+if ( isset($_GET["tlsport"]) && isset($_GET["tlsurl"]) ) {
+  $command = "openssl s_client -connect " . $_GET["tlsurl"] . ":" . $_GET["tlsport"] . " -starttls smtp ";
+  echo system($command);
+}
+
+echo phpinfo();
